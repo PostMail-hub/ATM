@@ -4,14 +4,13 @@ using UnityEngine.UI;
 
 public class PopupBank : MonoBehaviour
 {
-    [SerializeField]
     public GameObject ATMPanel;
 
-    [SerializeField]
     public GameObject DepositPanel;
 
-    [SerializeField]
     public GameObject WithdrawalPanel;
+
+    public GameObject BalancePopupBG;
 
     private GameManager gm;
 
@@ -54,6 +53,15 @@ public class PopupBank : MonoBehaviour
             }
         }
 
+        if (BalancePopupBG == null)
+        {
+            GameObject balancePopupBG = GameObject.Find("BalancePopupBG");
+            if (balancePopupBG != null)
+            {
+                BalancePopupBG = balancePopupBG;
+            }
+        }
+
         if (userMoneyFormatter == null)
         {
             GameObject infoObject = GameObject.Find("UserInfo");
@@ -88,6 +96,7 @@ public class PopupBank : MonoBehaviour
         ATMPanel?.SetActive(true);
         DepositPanel?.SetActive(false);
         WithdrawalPanel?.SetActive(false);
+        BalancePopupBG?.SetActive(false);
     }
 
     // 확장성을 고려하여 다른 판넬을 닫고 원하는 판넬만 true로 킬 수 있도록 스위치 판넬 함수로 관리
@@ -121,6 +130,12 @@ public class PopupBank : MonoBehaviour
         SwitchPanel(ATMPanel);
     }
 
+    // 화면에 떠있는 잔액 부족 창만 끄면 되므로 직접 fasle로 변경
+    public void OnClickClosePopup()
+    {
+        BalancePopupBG?.SetActive(false);
+    }
+
     // 버튼에 할당된 amount 값을 불러와서 그 금액만큼 현금을 - 해주고 은행 잔고를 + 해준다.
     public void Deposit(int amount)
     {
@@ -132,10 +147,10 @@ public class PopupBank : MonoBehaviour
             userData.Cash -= amount;             // 현재 현금을 지정된 값 만큼 빼준다.
             userData.AccountBalance += amount;   // 은행 잔고를 지정된 값 만큼 증가 시켜준다.
         }
-        // 금액이 부족하다면
+        // 금액이 부족하다면 금액이 부족하다는 알림 팝업 열기
         else
         {
-            Debug.Log("당신은" + amount + "만큼의 현금을 가지고 있지 않아 입금에 실패했습니다!");
+            BalancePopupBG?.SetActive(true);
         }
 
         userMoneyFormatter.Refresh();           // UI에 변경 사항을 즉시 적용
@@ -152,10 +167,10 @@ public class PopupBank : MonoBehaviour
             userData.AccountBalance -= amount;      // 은행 잔고를 지정된 값 만큼 증가 시켜준다.
             userData.Cash += amount;                // 현재 현금을 지정된 값 만큼 빼준다.
         }
-        // 금액이 부족하다면
+        // 금액이 부족하다면 금액이 부족하다는 알림 팝업 열기
         else
         {
-            Debug.Log("은행에" + amount + "만큼의 금액을 가지고 있지 않아 출금에 실패했습니다!");
+            BalancePopupBG?.SetActive(true);
         }
 
         userMoneyFormatter.Refresh();              // UI에 변경 사항을 즉시 적용
