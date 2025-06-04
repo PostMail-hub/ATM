@@ -14,6 +14,10 @@ public class PopupBank : MonoBehaviour
 
     private GameManager gm;
 
+    private UserData userData;
+
+    public UserMoneyFormatter userMoneyFormatter;
+
     // 오브젝트가 없을 경우에 아래와 같은 이름의 오브젝트를 자동으로 참조
     private void Awake()
     {
@@ -43,6 +47,15 @@ public class PopupBank : MonoBehaviour
             if (withdrawal != null)
             {
                 WithdrawalPanel = withdrawal;
+            }
+        }
+
+        if (userMoneyFormatter == null)
+        {
+            GameObject infoObject = GameObject.Find("UserInfo");
+            if (infoObject != null)
+            {
+                userMoneyFormatter = infoObject.GetComponent<UserMoneyFormatter>();
             }
         }
     }
@@ -84,5 +97,39 @@ public class PopupBank : MonoBehaviour
     public void OnClickATM()
     {
         SwitchPanel(ATMPanel);
+    }
+
+    public void Deposit(int amount)
+    {
+        UserData userData = GameManager.Instance.userData;
+
+        if (amount <= userData.Cash)
+        {
+            userData.Cash -= amount;
+            userData.AccountBalance += amount;
+        }
+        else
+        {
+            Debug.Log("당신은" + amount + "만큼의 현금을 가지고 있지 않아 입금에 실패했습니다!");
+        }
+
+        userMoneyFormatter.Refresh();
+    }
+
+    public void Withdrawal(int amount)
+    {
+        UserData userData = GameManager.Instance.userData;
+
+        if (amount <= userData.AccountBalance)
+        {
+            userData.AccountBalance -= amount;
+            userData.Cash += amount;
+        }
+        else
+        {
+            Debug.Log("은행에" + amount + "만큼의 금액을 가지고 있지 않아 출금에 실패했습니다!");
+        }
+
+        userMoneyFormatter.Refresh();
     }
 }
