@@ -444,7 +444,7 @@ GameObject:
   - component: {fileID: 246118525}
   - component: {fileID: 246118524}
   m_Layer: 5
-  m_Name: InputField (Legacy)
+  m_Name: WithdrawInputField
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -529,13 +529,13 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 246118526}
   m_TextComponent: {fileID: 1314812663}
   m_Placeholder: {fileID: 1144251390}
-  m_ContentType: 0
+  m_ContentType: 2
   m_InputType: 0
   m_AsteriskChar: 42
-  m_KeyboardType: 0
+  m_KeyboardType: 4
   m_LineType: 0
   m_HideMobileInput: 0
-  m_CharacterValidation: 0
+  m_CharacterValidation: 1
   m_CharacterLimit: 0
   m_OnSubmit:
     m_PersistentCalls:
@@ -1909,7 +1909,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 790043196}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1474197242}
+        m_TargetAssemblyTypeName: PopupBank, Assembly-CSharp
+        m_MethodName: TryDeposit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &790043196
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2927,7 +2939,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1157400941}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1474197242}
+        m_TargetAssemblyTypeName: PopupBank, Assembly-CSharp
+        m_MethodName: TryWithdraw
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1157400941
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3795,6 +3819,8 @@ MonoBehaviour:
   DepositPanel: {fileID: 0}
   WithdrawalPanel: {fileID: 0}
   userMoneyFormatter: {fileID: 0}
+  DepositInputField: {fileID: 0}
+  WithdrawInputField: {fileID: 0}
 --- !u!4 &1474197243
 Transform:
   m_ObjectHideFlags: 0
@@ -4457,7 +4483,7 @@ GameObject:
   - component: {fileID: 1670542171}
   - component: {fileID: 1670542170}
   m_Layer: 5
-  m_Name: InputField (Legacy)
+  m_Name: DepositInputField
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4542,13 +4568,13 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1670542172}
   m_TextComponent: {fileID: 821815565}
   m_Placeholder: {fileID: 15557802}
-  m_ContentType: 0
+  m_ContentType: 2
   m_InputType: 0
   m_AsteriskChar: 42
-  m_KeyboardType: 0
+  m_KeyboardType: 4
   m_LineType: 0
   m_HideMobileInput: 0
-  m_CharacterValidation: 0
+  m_CharacterValidation: 1
   m_CharacterLimit: 0
   m_OnSubmit:
     m_PersistentCalls:
