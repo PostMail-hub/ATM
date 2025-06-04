@@ -21,6 +21,7 @@ sysinfo.txt
 
 # Visual Studio Code 관련 설정 폴더
 .vscode/
+.vs/
 
 # JetBrains Rider 관련 설정 폴더
 .idea/
