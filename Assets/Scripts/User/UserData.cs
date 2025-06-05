@@ -17,6 +17,10 @@ public class UserData
 
     public int AccountBalance;
 
+    public string ID;
+
+    public string PassWord;
+
     public UserData(string name, int cash, int balance)
     {
         Name = name;
