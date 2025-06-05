@@ -581,9 +581,9 @@ RectTransform:
   - {fileID: 1524238254}
   m_Father: {fileID: 1457949844}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 239.6487, y: -270.49078}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 240, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &144197955
@@ -645,8 +645,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1474197242}
-        m_TargetAssemblyTypeName: PopupBank, Assembly-CSharp
+      - m_Target: {fileID: 961809722}
+        m_TargetAssemblyTypeName: BankUIController, Assembly-CSharp
         m_MethodName: OnClickATM
         m_Mode: 1
         m_Arguments:
@@ -1318,9 +1318,9 @@ RectTransform:
   - {fileID: 1472135916}
   m_Father: {fileID: 1457949844}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 239.6487, y: -117.85921}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 240, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &352753141
@@ -1802,8 +1802,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1474197242}
-        m_TargetAssemblyTypeName: PopupBank, Assembly-CSharp
+      - m_Target: {fileID: 961809722}
+        m_TargetAssemblyTypeName: BankUIController, Assembly-CSharp
         m_MethodName: OnClickClosePopup
         m_Mode: 1
         m_Arguments:
@@ -2348,9 +2348,9 @@ RectTransform:
   - {fileID: 1779677425}
   m_Father: {fileID: 1457949844}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 239.6487, y: -219.6136}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 240, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &529494639
@@ -2722,9 +2722,9 @@ RectTransform:
   - {fileID: 885805116}
   m_Father: {fileID: 1178329301}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 239.6487, y: -168.7364}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 240, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &739983731
@@ -3875,6 +3875,56 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 957694880}
   m_CullTransparentMesh: 1
+--- !u!1 &961809721
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 961809723}
+  - component: {fileID: 961809722}
+  m_Layer: 0
+  m_Name: UIController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &961809722
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 961809721}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d7c80026815e9141b4b3dfaa7007a5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LoginPanel: {fileID: 0}
+  BankPanel: {fileID: 0}
+  ATMPanel: {fileID: 0}
+  DepositPanel: {fileID: 0}
+  WithdrawalPanel: {fileID: 0}
+  BalancePopupBG: {fileID: 0}
+--- !u!4 &961809723
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 961809721}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 485.84073, y: 290.2532, z: 2.851866}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &994723856
 GameObject:
   m_ObjectHideFlags: 0
@@ -4460,9 +4510,9 @@ RectTransform:
   - {fileID: 441918885}
   m_Father: {fileID: 1178329301}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 239.6487, y: -219.6136}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 240, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1157400937
@@ -4989,8 +5039,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1474197242}
-        m_TargetAssemblyTypeName: PopupBank, Assembly-CSharp
+      - m_Target: {fileID: 961809722}
+        m_TargetAssemblyTypeName: BankUIController, Assembly-CSharp
         m_MethodName: OnClickWithdrawal
         m_Mode: 1
         m_Arguments:
@@ -5294,8 +5344,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1474197242}
-        m_TargetAssemblyTypeName: PopupBank, Assembly-CSharp
+      - m_Target: {fileID: 961809722}
+        m_TargetAssemblyTypeName: BankUIController, Assembly-CSharp
         m_MethodName: OnClickDeposit
         m_Mode: 1
         m_Arguments:
@@ -5599,12 +5649,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4baa0baef02ef1941b237db5b518cbee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LoginPanel: {fileID: 0}
-  BankPanel: {fileID: 0}
-  ATMPanel: {fileID: 0}
-  DepositPanel: {fileID: 0}
-  WithdrawalPanel: {fileID: 0}
-  BalancePopupBG: {fileID: 0}
   userMoneyFormatter: {fileID: 0}
   DepositInputField: {fileID: 0}
   WithdrawInputField: {fileID: 0}
@@ -5658,9 +5702,9 @@ RectTransform:
   - {fileID: 994723857}
   m_Father: {fileID: 1178329301}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 239.6487, y: -117.85921}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 240, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1485283950
@@ -5807,9 +5851,9 @@ RectTransform:
   - {fileID: 1822488005}
   m_Father: {fileID: 1457949844}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 239.6487, y: -66.982}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 240, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1491717950
@@ -6090,9 +6134,9 @@ RectTransform:
   - {fileID: 1703585170}
   m_Father: {fileID: 1178329301}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 239.6487, y: -270.49078}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 240, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1523002232
@@ -6154,8 +6198,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1474197242}
-        m_TargetAssemblyTypeName: PopupBank, Assembly-CSharp
+      - m_Target: {fileID: 961809722}
+        m_TargetAssemblyTypeName: BankUIController, Assembly-CSharp
         m_MethodName: OnClickATM
         m_Mode: 1
         m_Arguments:
@@ -6377,7 +6421,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1596929332
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7084,9 +7128,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1178329301}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 239.6487, y: -20.991001}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 47.4382, y: 30.2276}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1793631529
@@ -7961,9 +8005,9 @@ RectTransform:
   - {fileID: 1245084987}
   m_Father: {fileID: 1457949844}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 239.6487, y: -168.7364}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 240, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2007526072
@@ -8107,9 +8151,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1457949844}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 239.6487, y: -20.991001}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 47.4382, y: 30.2276}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2012100242
@@ -8391,9 +8435,9 @@ RectTransform:
   - {fileID: 245132496}
   m_Father: {fileID: 1178329301}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 239.6487, y: -66.982}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 240, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2029696166
@@ -8748,3 +8792,4 @@ SceneRoots:
   - {fileID: 875514382}
   - {fileID: 1251776723}
   - {fileID: 1474197243}
+  - {fileID: 961809723}

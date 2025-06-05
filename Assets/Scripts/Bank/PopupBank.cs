@@ -4,17 +4,7 @@ using UnityEngine.UI;
 
 public class PopupBank : MonoBehaviour
 {
-    public GameObject LoginPanel;
-
-    public GameObject BankPanel;
-
-    public GameObject ATMPanel;
-
-    public GameObject DepositPanel;
-
-    public GameObject WithdrawalPanel;
-
-    public GameObject BalancePopupBG;
+    BankUIController bankUIController;
 
     private GameManager gm;
 
@@ -30,57 +20,12 @@ public class PopupBank : MonoBehaviour
     {
         gm = GameManager.Instance;
 
-        if (BankPanel == null)
+        if (bankUIController == null)
         {
-            GameObject bank = GameObject.Find("PopupBank");
-            if (bank != null)
+            GameObject uiControllerObj = GameObject.Find("UIController");
+            if (uiControllerObj != null)
             {
-                BankPanel = bank;
-            }
-        }
-
-        if (LoginPanel == null)
-        {
-            GameObject login = GameObject.Find("PopupLogin");
-            if (login != null)
-            {
-                LoginPanel = login;
-            }
-        }
-
-        if (ATMPanel == null)
-        {
-            GameObject atm = GameObject.Find("ATM");
-            if (atm != null)
-            {
-                ATMPanel = atm;
-            }
-        }
-
-        if (DepositPanel == null)
-        {
-            GameObject deposit = GameObject.Find("Deposit");
-            if (deposit != null)
-            {
-                DepositPanel = deposit;
-            }
-        }
-
-        if (WithdrawalPanel == null)
-        {
-            GameObject withdrawal = GameObject.Find("Withdraw");
-            if (withdrawal != null)
-            {
-                WithdrawalPanel = withdrawal;
-            }
-        }
-
-        if (BalancePopupBG == null)
-        {
-            GameObject balancePopupBG = GameObject.Find("BalancePopupBG");
-            if (balancePopupBG != null)
-            {
-                BalancePopupBG = balancePopupBG;
+                bankUIController = uiControllerObj.GetComponent<BankUIController>();
             }
         }
 
@@ -112,61 +57,6 @@ public class PopupBank : MonoBehaviour
         }
     }
 
-    // 게임 시작 시 , 로그인 창을 냅두고 모두 닫는다.
-    private void Start()
-    {
-        LoginPanel?.SetActive(true);
-        BankPanel?.SetActive(false);
-        ATMPanel?.SetActive(false);
-        DepositPanel?.SetActive(false);
-        WithdrawalPanel?.SetActive(false);
-        BalancePopupBG?.SetActive(false);
-    }
-
-    // 확장성을 고려하여 다른 판넬을 닫고 원하는 판넬만 true로 킬 수 있도록 스위치 판넬 함수로 관리
-    public void SwitchPanel(GameObject targetPanel)
-    {
-        ATMPanel.SetActive(false);
-        DepositPanel.SetActive(false);
-        WithdrawalPanel.SetActive(false);
-
-        targetPanel.SetActive(true);
-    }
-
-    // 로그인 성공 시, 로그인 화면은 끄고 뱅크 화면으로 진입한다.
-    public void OnClickLogin()
-    {
-        LoginPanel?.SetActive(false);
-        SwitchPanel(BankPanel);
-    }
-
-    // 스위치 판넬 함수를 DepositPanel 판넬을 타겟으로 하여 실행
-    // ATM 화면에서 입금 버튼 클릭 시 , 입금 화면 출력
-    public void OnClickDeposit()
-    {
-        SwitchPanel(DepositPanel);
-    }
-
-    // 스위치 판넬 함수를 WithdrawalPanel 판넬을 타겟으로 하여 실행
-    // ATM 화면에서 출금 버튼 클릭 시 , 출금 화면 출력
-    public void OnClickWithdrawal()
-    {
-        SwitchPanel(WithdrawalPanel);
-    }
-
-    // 스위치 판넬 함수를 ATMPanel 판넬을 타겟으로 하여 실행
-    // 입금 , 출금 화면에서 뒤로 가기 버튼 클릭 시, ATM 화면 출력
-    public void OnClickATM()
-    {
-        SwitchPanel(ATMPanel);
-    }
-
-    // 화면에 떠있는 잔액 부족 창만 끄면 되므로 직접 fasle로 변경
-    public void OnClickClosePopup()
-    {
-        BalancePopupBG?.SetActive(false);
-    }
-
     // 버튼에 할당된 amount 값을 불러와서 그 금액만큼 현금을 - 해주고 은행 잔고를 + 해준다.
     public void Deposit(int amount)
     {
@@ -182,7 +72,7 @@ public class PopupBank : MonoBehaviour
         // 금액이 부족하다면 금액이 부족하다는 알림 팝업 열기
         else
         {
-            BalancePopupBG?.SetActive(true);
+            bankUIController.ShowBalanceWarningPopup();
         }
 
         userMoneyFormatter.Refresh();           // UI에 변경 사항을 즉시 적용
@@ -203,7 +93,7 @@ public class PopupBank : MonoBehaviour
         // 금액이 부족하다면 금액이 부족하다는 알림 팝업 열기
         else
         {
-            BalancePopupBG?.SetActive(true);
+            bankUIController.ShowBalanceWarningPopup();
         }
 
         userMoneyFormatter.Refresh();              // UI에 변경 사항을 즉시 적용
