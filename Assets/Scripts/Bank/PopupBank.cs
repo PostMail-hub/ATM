@@ -4,6 +4,10 @@ using UnityEngine.UI;
 
 public class PopupBank : MonoBehaviour
 {
+    public GameObject LoginPanel;
+
+    public GameObject BankPanel;
+
     public GameObject ATMPanel;
 
     public GameObject DepositPanel;
@@ -25,6 +29,24 @@ public class PopupBank : MonoBehaviour
     private void Awake()
     {
         gm = GameManager.Instance;
+
+        if (BankPanel == null)
+        {
+            GameObject bank = GameObject.Find("PopupBank");
+            if (bank != null)
+            {
+                BankPanel = bank;
+            }
+        }
+
+        if (LoginPanel == null)
+        {
+            GameObject login = GameObject.Find("PopupLogin");
+            if (login != null)
+            {
+                LoginPanel = login;
+            }
+        }
 
         if (ATMPanel == null)
         {
@@ -90,10 +112,12 @@ public class PopupBank : MonoBehaviour
         }
     }
 
-    // 게임 시작 시 , ATM 외의 모든 창은 닫는다.
+    // 게임 시작 시 , 로그인 창을 냅두고 모두 닫는다.
     private void Start()
     {
-        ATMPanel?.SetActive(true);
+        LoginPanel?.SetActive(true);
+        BankPanel?.SetActive(false);
+        ATMPanel?.SetActive(false);
         DepositPanel?.SetActive(false);
         WithdrawalPanel?.SetActive(false);
         BalancePopupBG?.SetActive(false);
@@ -107,6 +131,13 @@ public class PopupBank : MonoBehaviour
         WithdrawalPanel.SetActive(false);
 
         targetPanel.SetActive(true);
+    }
+
+    // 로그인 성공 시, 로그인 화면은 끄고 뱅크 화면으로 진입한다.
+    public void OnClickLogin()
+    {
+        LoginPanel?.SetActive(false);
+        SwitchPanel(BankPanel);
     }
 
     // 스위치 판넬 함수를 DepositPanel 판넬을 타겟으로 하여 실행

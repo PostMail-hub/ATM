@@ -5599,6 +5599,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4baa0baef02ef1941b237db5b518cbee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LoginPanel: {fileID: 0}
+  BankPanel: {fileID: 0}
   ATMPanel: {fileID: 0}
   DepositPanel: {fileID: 0}
   WithdrawalPanel: {fileID: 0}
