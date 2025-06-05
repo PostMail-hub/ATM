@@ -146,6 +146,7 @@ public class PopupBank : MonoBehaviour
         {
             userData.Cash -= amount;             // 현재 현금을 지정된 값 만큼 빼준다.
             userData.AccountBalance += amount;   // 은행 잔고를 지정된 값 만큼 증가 시켜준다.
+            GameManager.Instance.SaveUserData(); // 데이터를 저장해준다.
         }
         // 금액이 부족하다면 금액이 부족하다는 알림 팝업 열기
         else
@@ -166,6 +167,7 @@ public class PopupBank : MonoBehaviour
         {
             userData.AccountBalance -= amount;      // 은행 잔고를 지정된 값 만큼 증가 시켜준다.
             userData.Cash += amount;                // 현재 현금을 지정된 값 만큼 빼준다.
+            GameManager.Instance.SaveUserData();    // 데이터를 저장해준다.
         }
         // 금액이 부족하다면 금액이 부족하다는 알림 팝업 열기
         else
