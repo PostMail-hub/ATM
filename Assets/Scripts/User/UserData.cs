@@ -12,20 +12,17 @@
 public class UserData
 {
     public string Name;
-
     public int Cash;
-
     public int AccountBalance;
-
     public string ID;
-
     public string PassWord;
 
-    public UserData(string name, int cash, int balance)
+    public UserData(string name, int cash, int balance, string id, string password)
     {
         Name = name;
         Cash = cash;
         AccountBalance = balance;
+        ID = id;
+        PassWord = password;
     }
-
 }

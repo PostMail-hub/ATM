@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 
 /// GameManager는 게임 전반의 데이터를 관리하는 싱글톤 클래스
@@ -15,6 +16,9 @@ public class GameManager : MonoBehaviour
     // 유저 정보를 저장하는 데이터 객체
     // 이름, 현금, 통장 잔액 등의 정보를 포함합니다.
     public UserData userData;
+
+    public List<UserData> allUsers = new List<UserData>();
+    public UserData currentUser;
 
     // JSON 파일이 저장될 경로
     private string path;
@@ -37,30 +41,27 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            // 최초 실행이라면 기본값 세팅
-            userData = new UserData("이희민", 100000, 50000);
-            SaveUserData();    // 기본 데이터 저장
+            // 최초 실행일 경우: 빈 유저 리스트 초기화
+            allUsers = new List<UserData>();
+            SaveUserData();
         }
     }
 
-    // 현재 userData 객체를 JSON 문자열로 직렬화하여 파일로 저장한다.
-    // 값이 변경될 때마다 이 함수를 호출하여 자동 저장이 가능하도록 만들 수 있다.
     public void SaveUserData()
     {
-        string data = JsonUtility.ToJson(userData);
+        string data = JsonUtility.ToJson(new UserListWrapper(allUsers));
         File.WriteAllText(path, data);
     }
-
-    // 저장된 JSON 파일을 읽어 userData 객체로 역직렬화한다.
-    // 파일이 존재하지 않으면 기본 데이터를 저장한 뒤 불러온다.
     public void LoadUserData()
     {
-        if (!File.Exists(path))
-        {
-            SaveUserData();        // 파일이 없을 경우 기본 데이터 저장
-        }
-
         string data = File.ReadAllText(path);
-        userData = JsonUtility.FromJson<UserData>(data);
+        allUsers = JsonUtility.FromJson<UserListWrapper>(data).users;
+    }
+
+    [System.Serializable]
+    public class UserListWrapper
+    {
+        public List<UserData> users;
+        public UserListWrapper(List<UserData> list) => users = list;
     }
 }

@@ -14,6 +14,10 @@ public class BankUIController : MonoBehaviour
 
     public GameObject BalancePopupBG;
 
+    public GameObject ErrorPopup;
+
+    public GameObject RegisterPopup;
+
     // 오브젝트가 없을 경우에 아래와 같은 이름의 오브젝트를 자동으로 참조
     private void Awake()
     {
@@ -71,6 +75,34 @@ public class BankUIController : MonoBehaviour
                 BalancePopupBG = balancePopupBG;
             }
         }
+
+        if (BalancePopupBG == null)
+        {
+            GameObject balancePopupBG = GameObject.Find("BalancePopupBG");
+            if (balancePopupBG != null)
+            {
+                BalancePopupBG = balancePopupBG;
+            }
+        }
+
+        if (ErrorPopup == null)
+        {
+            GameObject errorpopupObj = GameObject.Find("ErrorPopup");
+            if (errorpopupObj != null)
+            {
+                ErrorPopup = errorpopupObj;
+            }
+        }
+
+        if (RegisterPopup == null)
+        {
+            GameObject registerPopupObj = GameObject.Find("RegisterPopup");
+            if (registerPopupObj != null)
+            {
+                RegisterPopup = registerPopupObj;
+            }
+        }
+
     }
 
     // 게임 시작 시 , 로그인 창과 atm 버튼을 냅두고 모두 닫는다.
@@ -82,6 +114,8 @@ public class BankUIController : MonoBehaviour
         DepositPanel?.SetActive(false);
         WithdrawalPanel?.SetActive(false);
         BalancePopupBG?.SetActive(false);
+        ErrorPopup?.SetActive(false);
+        RegisterPopup?.SetActive(false);
     }
 
     // 확장성을 고려하여 다른 판넬을 닫고 원하는 판넬만 true로 킬 수 있도록 스위치 판넬 함수로 관리
