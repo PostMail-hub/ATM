@@ -6,18 +6,20 @@ using UnityEngine.UI;
 
 public class LoginManager : MonoBehaviour
 {
-    public InputField idInputField;
-    public InputField passwordInputField;
+    public InputField idInputField;             // 아이디 입력 인풋 필드
+    public InputField passwordInputField;       // 비밀번호 입력 인풋 필드
+                                                
+    public GameObject loginUI;                  // 로그인 UI 창
+    public GameObject bankUI;                   // 뱅크 UI 창
+                                                
+    public GameObject ErrorPopup;               // 에러 UI 창
+    public TextMeshProUGUI errorMessage;        // 에러 UI 에서 뜨는 TextMeshPro 메시지
 
-    public GameObject loginUI;
-    public GameObject bankUI;
+    public GameObject registerPopup;            // 회원가입 성공 시, 이름을 입력하는 UI 창
+    public TMP_InputField registerNameInput;    // 이름 입력 인풋 필드
 
-    public GameObject ErrorPopup;
-    public TextMeshProUGUI errorMessage;
 
-    public GameObject registerPopup;
-    public TMP_InputField registerNameInput;
-
+    // UI 오브젝트들이 인스펙터에서 할당되지 않은 경우, 씬에서 찾아 자동 연결
     private void Awake()
     {
         if (idInputField == null)
@@ -93,36 +95,44 @@ public class LoginManager : MonoBehaviour
         }
     }
 
-
+    // 로그인 버튼 클릭 시 호출되는 메서드
     public void OnLoginButtonClicked()
     {
         string inputId = idInputField.text;
         string inputPassword = passwordInputField.text;
 
+        // 저장된 유저 데이터를 불러옴
         GameManager.Instance.LoadUserData();
+
+        // 아이디와 비밀번호가 일치하는 유저 탐색
         var matchedUser = GameManager.Instance.allUsers
             .Find(user => user.ID == inputId && user.PassWord == inputPassword);
 
         if (matchedUser != null)
         {
+            // 로그인 성공 시 유저 데이터를 적용하고 UI 전환
             Debug.Log("로그인에 성공하셨습니다.");
             GameManager.Instance.userData = matchedUser;
 
             loginUI.SetActive(false);
             bankUI.SetActive(true);
 
+            // 유저 잔액 등 데이터 새로 고침
             FindObjectOfType<UserMoneyFormatter>()?.Refresh();
         }
         else
         {
+            // 로그인 실패 시 에러 팝업 표시
             ShowError("아이디 또는 비밀번호가 틀렸습니다.");
         }
     }
 
+    // 회원가입 버튼 클릭 시 호출되는 메서드
     public void OnRegisterButtonClicked()
     {
         GameManager.Instance.LoadUserData();
 
+        // 이미 존재하는 아이디인지 확인
         bool isDuplicate = GameManager.Instance.allUsers
     .Any(user => user.ID == idInputField.text);
 
@@ -132,6 +142,7 @@ public class LoginManager : MonoBehaviour
             return;
         }
 
+        // 비밀번호 유효성 검사
         string password = passwordInputField.text;
 
         if (string.IsNullOrWhiteSpace(password) || password.Length < 4)
@@ -140,76 +151,59 @@ public class LoginManager : MonoBehaviour
             return;
         }
 
-        // 아이디가 중복이 아니며, 비밀번호의 글자 제한도 만족할 경우, 회원가입 완료 이후 이름 입력 UI 띄우기
+        // 조건을 만족하면 이름 입력창을 활성화하여 회원가입 계속 진행
         registerPopup.SetActive(true);
     }
 
+    // 회원가입 이름 확인 버튼 클릭 시 호출되는 메서드
     public void OnRegisterConfirmButtonClicked()
     {
         string inputName = registerNameInput.text;
         string inputId = idInputField.text;
         string inputPassword = passwordInputField.text;
 
+        // 이름 입력 확인
         if (string.IsNullOrWhiteSpace(inputName))
         {
             ShowError("이름을 입력하세요.");
             return;
         }
 
+        // 이름 유효성 검사 (한글만 허용)
         if (!Regex.IsMatch(inputName, @"^[가-힣]+$"))
         {
             ShowError("이름은 한글만 입력할 수 있습니다.");
             return;
         }
 
+        // 이름 유효성 검사(5글자 이하만 허용)
         if (inputName.Length > 5)
         {
             ShowError("이름은 5자 이하로 입력하세요.");
             return;
         }
 
+        // 새 유저 생성 및 저장
         UserData newUser = new UserData(inputName, 100000, 50000, inputId, inputPassword);
         GameManager.Instance.allUsers.Add(newUser);
         GameManager.Instance.SaveUserData();
 
+        // 회원가입 UI 종료 및 입력 필드 초기화
         registerPopup.SetActive(false);
         idInputField.text = "";
         passwordInputField.text = "";
     }
 
+    // 에러 팝업 활성화 및 메시지 출력
     void ShowError(string message)
     {
         ErrorPopup.SetActive(true);
         errorMessage.text = message;
     }
 
+    // 에러 팝업 확인 버튼 클릭 시 호출
     public void OnErrorConfirmButtonClicked()
     {
         ErrorPopup.SetActive(false);
     }
-
-
-    // 로그인 매니저 구조에 대해 먼저 작성하기
-    // 아이디와 패스워드의 인풋 텍스트를 받아온다.
-
-    // 로그인 버튼을 눌렀을 경우, 아이디와 비밀번호가 데이터 상에서 존재하고, 동일한지 비교한다.
-
-    // 동일할 경우, 그 아이디와 비밀번호를 가진 유저 데이터의 이름과 금액이 저장되어 있다면 불러온다.
-
-    // 데이터가 존재하지 않을 경우, 임의로 금액을 조정하여 데이터를 설정한다.
-
-    // 그리고 최종적으로 로그인 UI를 비활성화 시키고 뱅크 UI 를 활성화 시킨다.
-
-    // 만일 아이디와 비밀번호가 하나라도 동일하지 않을 경우 아이디나 비밀번호가 틀렸다는 오류 창을 띄워주고 확인 버튼을 누르면 꺼지도록 만들어준다.
-
-
-    // 회원가입 버튼을 눌렀을 경우, 아이디가 데이터 상에 존재하는 지 비교한다.
-
-    // 아이디의 데이터가 중복이 아니라면, 이름을 입력하는 창과 입력 완료 버튼을 위에 띄운다.
-
-    // 그리고 한글을 알맞게 입력했을 시 중복이 아니라면 , 유저 데이터에 이름과 아이디 , 비밀번호를 저장해준다.
-
-    // 이후에 이름을 작성하던 창은 지우고 아이디와 비밀번호가 입력된 인풋 필드의 텍스트 값은 공백으로 다시 초기화 시켜준다.
-
-    // 만일 아이디의 데이터가 중복이라면, 이미 중복된 아이디라는 오류 창을 띄워주고 확인 버튼을 누르면 꺼지도록 만들어준다.
 }
