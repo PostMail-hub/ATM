@@ -67,8 +67,8 @@ MonoBehaviour:
     y: 0
     width: 100
     height: 121
-  m_MinSize: {x: 100, y: 100}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 100, y: 121}
+  m_MaxSize: {x: 4000, y: 4021}
   m_ActualView: {fileID: 15}
   m_Panes:
   - {fileID: 15}
@@ -195,7 +195,7 @@ MonoBehaviour:
   m_MinSize: {x: 400, y: 100}
   m_MaxSize: {x: 32384, y: 16192}
   vertical: 0
-  controlID: 85
+  controlID: 106
 --- !u!114 &9
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -345,8 +345,8 @@ MonoBehaviour:
     y: 0
     width: 692
     height: 1307
-  m_MinSize: {x: 275, y: 50}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 276, y: 71}
+  m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 21}
   m_Panes:
   - {fileID: 21}
@@ -924,9 +924,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 485.84073, y: 290.2532, z: 2.851866}
+    m_Target: {x: 483.5, y: 272, z: 0}
     speed: 2
-    m_Value: {x: 485.84073, y: 290.2532, z: 2.851866}
+    m_Value: {x: 483.5, y: 272, z: 0}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -976,9 +976,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 285.4494
+    m_Target: 81.394104
     speed: 2
-    m_Value: 285.4494
+    m_Value: 81.394104
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -1210,21 +1210,21 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 16fbffffda630000
+      m_ExpandedIDs: 1ac0ffffcac6ffffd0c6ffff3ce2ffff18e4ffff16fbffffbe610000286200009c620000c0620000d2620000e6620000f66200003a6300001e640000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
-        m_Name: 
-        m_OriginalName: 
+        m_Name: InputName
+        m_OriginalName: InputName
         m_EditFieldRect:
           serializedVersion: 2
           x: 0
           y: 0
           width: 0
           height: 0
-        m_UserData: 0
+        m_UserData: -16352
         m_IsWaitingForDelay: 0
         m_IsRenaming: 0
-        m_OriginalEventType: 11
+        m_OriginalEventType: 0
         m_IsRenamingFilename: 0
         m_ClientGUIView: {fileID: 12}
       m_SearchString: 
@@ -1294,7 +1294,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 3a620000
     m_LastClickedID: 25146
-    m_ExpandedIDs: 000000008c6400008e64000090640000926400009464000096640000
+    m_ExpandedIDs: 000000009464000096640000986400009a6400009c6400009e640000a0640000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1322,21 +1322,21 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: ffffffff000000008c6400008e64000090640000926400009464000096640000e8640000
+    m_ExpandedIDs: ffffffff000000009464000096640000986400009a6400009c6400009e640000a0640000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: BankUIController
-      m_OriginalName: BankUIController
+      m_Name: 
+      m_OriginalName: 
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 25836
+      m_UserData: 0
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 0
+      m_OriginalEventType: 11
       m_IsRenamingFilename: 1
       m_ClientGUIView: {fileID: 13}
     m_SearchString: 
